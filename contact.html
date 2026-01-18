@@ -11,7 +11,7 @@
 
   <style>
     body {
-      background-color: #1c1c1c; /* Matching your theme */
+      background-color: #1c1c1c;
       font-family: 'Montserrat', sans-serif;
       color: #f2e7f2;
       margin: 0;
@@ -51,9 +51,6 @@
 
     h2 { font-family: 'Rouge Script', cursive; color: #f0b9c8; font-size: 3rem; margin-bottom: 1rem; }
 
-    .intro-text { font-size: 1.1rem; color: #ccc; margin-bottom: 2rem; line-height: 1.6; }
-
-    /* BOOKING PROTOCOL SECTION */
     .protocol-box {
       background-color: rgba(240, 185, 200, 0.05);
       border: 1px dashed #f0b9c8;
@@ -71,72 +68,61 @@
       margin-top: 0;
     }
 
-    .protocol-list { list-style: none; padding: 0; }
-    .protocol-list li {
-      margin-bottom: 1rem;
-      padding-left: 25px;
-      position: relative;
-      font-size: 0.9rem;
-      color: #ccc;
-    }
-    .protocol-list li::before {
-      content: "✦";
-      position: absolute;
-      left: 0;
-      color: #f0b9c8;
-    }
+    .protocol-list { list-style: none; padding: 0; line-height: 1.8; font-size: 0.9rem; color: #ccc; }
+    .protocol-list li b { color: #f0b9c8; }
 
-    /* WhatsApp Elements */
-    #chat-container {
+    /* WhatsApp Button Styles */
+    #custom-chat-wrapper {
       position: fixed;
       bottom: 25px;
       right: 25px;
       z-index: 1000;
     }
 
-    #chat-button {
+    #open-chat-btn {
       background-color: #f0b9c8;
       color: #1c1c1c;
       border: none;
       border-radius: 50px;
-      padding: 15px 30px;
+      padding: 15px 25px;
       cursor: pointer;
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 1px;
-      box-shadow: 0 4px 15px rgba(240, 185, 200, 0.3);
-      transition: transform 0.3s;
+      box-shadow: 0 4px 15px rgba(240, 185, 200, 0.4);
+      transition: all 0.3s;
     }
-    #chat-button:hover { transform: scale(1.05); background-color: #ff8fc1; }
 
-    #chat-popup {
+    #open-chat-btn:hover {
+      background-color: #ff8fc1;
+      transform: scale(1.05);
+    }
+
+    #chat-window {
       display: none;
       position: fixed;
       bottom: 90px;
       right: 25px;
-      width: 300px;
+      width: 280px;
       background-color: #2a2a2a;
       border: 1px solid #f0b9c8;
       border-radius: 15px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.6);
     }
 
-    #chat-header {
+    .chat-header {
       background-color: #f0b9c8;
       color: #1c1c1c;
-      padding: 15px;
-      border-radius: 13px 13px 0 0;
+      padding: 12px;
       font-weight: bold;
       display: flex;
       justify-content: space-between;
     }
 
-    #chat-close { cursor: pointer; }
-
-    #chat-body { padding: 20px; text-align: center; }
-    #chat-body p { font-size: 0.9rem; margin-bottom: 15px; }
-
-    #chat-send-btn {
+    .chat-body { padding: 20px; text-align: center; }
+    
+    .whatsapp-link {
       background-color: #f0b9c8;
       color: #1c1c1c;
       padding: 12px;
@@ -144,11 +130,10 @@
       text-decoration: none;
       display: block;
       font-weight: bold;
-      transition: 0.3s;
+      margin-top: 10px;
     }
-    #chat-send-btn:hover { background-color: #ff8fc1; }
 
-    footer { font-size: 0.8rem; color: #777; }
+    footer { font-size: 0.8rem; color: #777; margin-top: 5rem; }
   </style>
 </head>
 <body>
@@ -164,99 +149,55 @@
   </header>
 
   <main>
-    <h2>Contact Me</h2>
-    <p class="intro-text">
-      Ready to submit? I am available for sessions in Birmingham. 
-      Communication is handled via WhatsApp for discretion and efficiency.
-    </p>
+    <h2>Arrange Your Session</h2>
+    <p style="color: #ccc;">I am available for bookings in Birmingham. Please review my requirements below before reaching out.</p>
 
     <div class="protocol-box">
-      <h3>Booking Protocol</h3>
+      <h3>Booking Requirements</h3>
       <ul class="protocol-list">
-        <li><strong>Verification:</strong> New clients may be required to provide a form of ID or a professional reference for safety.</li>
-        <li><strong>Information:</strong> Please include your name, preferred session duration, and specific services/fantasies in your first message.</li>
-        <li><strong>Respect:</strong> I only respond to polite and serious enquiries. Time-wasters will be permanently blocked.</li>
-        <li><strong>Privacy:</strong> All your details are handled with the highest level of discretion.</li>
+        <li>✦ <b>Verification:</b> I may require ID or a professional reference for new clients.</li>
+        <li>✦ <b>Information:</b> State your name, desired time, and any specific interests.</li>
+        <li>✦ <b>Etiquette:</b> Only respectful, serious enquiries will be acknowledged.</li>
+        <li>✦ <b>Privacy:</b> Your discretion is guaranteed; I expect the same in return.</li>
       </ul>
     </div>
-
-    <p style="font-style: italic; color: #f0b9c8;">Tap the chat button below to start your enquiry.</p>
   </main>
 
-  <div id="chat-container">
-    <div id="chat-popup">
-      <div id="chat-header">
-        <span>💬 Enquire Now</span>
-        <span id="chat-close">&times;</span>
+  <div id="custom-chat-wrapper">
+    <div id="chat-window">
+      <div class="chat-header">
+        <span>Message Me</span>
+        <span id="close-chat" style="cursor:pointer;">&times;</span>
       </div>
-      <div id="chat-body">
-        <p>Click below to message me directly on WhatsApp regarding your session.</p>
-        <a href="https://wa.me/447503067569?text=Hello%20Miss%20Princess,%20I%20would%20like%20to%20enquire%20about%20a%20session." id="chat-send-btn" target="_blank">
-          Send WhatsApp 💌
+      <div class="chat-body">
+        <p style="font-size: 0.85rem; color: #eee; margin-bottom: 15px;">I'll respond as soon as I'm available.</p>
+        <a href="https://wa.me/447503067569?text=Hello%20Miss%20Princess" class="whatsapp-link" target="_blank">
+          Open WhatsApp 💌
         </a>
       </div>
     </div>
-    <button id="chat-button">Message Me 💌</button>
+    <button id="open-chat-btn">Contact Me 💌</button>
   </div>
 
   <footer>
-    © 2026 Miss Princess Birmingham — Strictly Professional
+    © 2026 Miss Princess Birmingham — Strictly 18+
   </footer>
 
   <script>
-    const chatButton = document.getElementById('chat-button');
-    const chatPopup = document.getElementById('chat-popup');
-    const chatClose = document.getElementById('chat-close');
+    const openBtn = document.getElementById('open-chat-btn');
+    const chatWin = document.getElementById('chat-window');
+    const closeBtn = document.getElementById('close-chat');
 
-    chatButton.addEventListener('click', () => {
-      chatPopup.style.display = 'block';
-      chatButton.style.display = 'none';
-    });
+    openBtn.onclick = function() {
+      chatWin.style.display = 'block';
+      openBtn.style.display = 'none';
+    };
 
-    chatClose.addEventListener('click', () => {
-      chatPopup.style.display = 'none';
-      chatButton.style.display = 'block';
-    });
+    closeBtn.onclick = function() {
+      chatWin.style.display = 'none';
+      openBtn.style.display = 'block';
+    };
   </script>
 </body>
 </html>
-  <!-- WhatsApp Chat -->
-  <div id="chat-container">
-    <div id="chat-popup">
-      <div id="chat-header">
-        💬 Chat with Miss Princess
-        <span id="chat-close">&times;</span>
-      </div>
-      <div id="chat-body">
-        <p>Hi there! Click the button below to message me directly on WhatsApp.</p>
-        <a href="https://wa.me/447503067569?text=Hello%20Miss%20Princess!" target="_blank">
-          <button id="chat-send">Message on WhatsApp 💌</button>
-        </a>
-      </div>
-    </div>
-    <button id="chat-button">Chat 💌</button>
-  </div>
-
-  <footer>
-    © 2025 Miss Princess — All rights reserved.
-  </footer>
-
-  <script>
-    const chatButton = document.getElementById('chat-button');
-    const chatPopup = document.getElementById('chat-popup');
-    const chatClose = document.getElementById('chat-close');
-
-    chatButton.addEventListener('click', () => {
-      chatPopup.style.display = 'block';
-      chatButton.style.display = 'none';
-    });
-
-    chatClose.addEventListener('click', () => {
-      chatPopup.style.display = 'none';
-      chatButton.style.display = 'block';
-    });
-  </script>
-</body>
-</html>
-
 
