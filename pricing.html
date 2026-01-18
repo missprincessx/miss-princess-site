@@ -1,19 +1,14 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Miss Princess – Pricing</title>
 
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Rouge+Script&display=swap"
-    rel="stylesheet"
-  />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Rouge+Script&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="styles.css" />
   <style>
     body {
       font-family: 'Montserrat', sans-serif;
@@ -25,172 +20,185 @@
 
     header, footer {
       text-align: center;
-      padding: 1rem 0;
+      padding: 1.5rem 0;
       background-color: #2a2a2a;
     }
 
     header h1 {
       font-family: 'Rouge Script', cursive;
-      font-size: 3rem;
+      font-size: 3.5rem;
       color: #f0b9c8;
-      margin: 0.2rem 0;
+      margin: 0;
     }
 
+    nav { margin-top: 1rem; }
     nav a {
       margin: 0 1rem;
       text-decoration: none;
       color: #e7dfe3;
       font-weight: 500;
+      font-size: 0.9rem;
+      transition: color 0.3s;
     }
+    nav a:hover { color: #f0b9c8; }
 
     main {
-      padding: 2rem;
+      padding: 3rem 1rem;
       text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
     }
 
-    h2 {
+    h2, h3 {
       font-family: 'Rouge Script', cursive;
-      font-size: 2.5rem;
       color: #f0b9c8;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
     }
 
+    h2 { font-size: 3rem; }
+    h3 { font-size: 2.2rem; margin-top: 3.5rem; }
+
+    /* RATE BOXES */
     .pricing-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1.2rem;
       margin-top: 2rem;
     }
 
     .price-card {
-      background-color: rgba(255,255,255,0.05);
-      border-radius: 15px;
-      padding: 1.5rem;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      cursor: pointer;
+      background-color: rgba(255,255,255,0.03);
+      border: 1px solid rgba(240, 185, 200, 0.15);
+      border-radius: 12px;
+      padding: 1.5rem 1rem;
+      transition: all 0.3s ease;
     }
 
     .price-card:hover {
-      transform: translateY(-8px) scale(1.05);
-      box-shadow: 0 8px 20px rgba(255, 0, 120, 0.4);
+      transform: translateY(-5px);
+      border-color: #f0b9c8;
     }
 
-    .price-card h3 {
-      font-family: 'Rouge Script', cursive;
-      color: #f0b9c8;
-      font-size: 1.8rem;
-      margin-bottom: 0.5rem;
+    .price-card span {
+      display: block;
+      font-weight: 600;
+      font-size: 1.4rem;
+      margin-top: 0.5rem;
+      color: #fff;
     }
 
-    .price-card p {
-      margin: 0;
-      font-size: 1.05rem;
-      color: #e7dfe3;
+    /* INCLUSIVE SERVICES */
+    .inclusive-box {
+      margin: 3.5rem auto;
+      padding: 2rem;
+      background-color: rgba(240, 185, 200, 0.04);
+      border: 1px dashed #f0b9c8;
+      border-radius: 15px;
     }
 
-    .add-ons {
-      margin-top: 3rem;
-    }
-
-    .add-ons h3 {
-      font-family: 'Rouge Script', cursive;
-      color: #f0b9c8;
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-
-    .add-ons ul {
+    .inclusive-list {
       list-style: none;
       padding: 0;
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      flex-wrap: wrap;
+      font-weight: 500;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      letter-spacing: 1px;
     }
 
-    .add-ons li {
-      background-color: rgba(255,255,255,0.05);
-      margin: 0.5rem auto;
-      padding: 1rem;
-      border-radius: 12px;
-      max-width: 300px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      cursor: pointer;
+    /* EXTRAS LIST */
+    .extras-list {
+      max-width: 550px;
+      margin: 0 auto;
+      text-align: left;
     }
 
-    .add-ons li:hover {
-      transform: translateY(-6px) scale(1.03);
-      box-shadow: 0 6px 15px rgba(255, 0, 120, 0.3);
+    .extra-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
     }
 
-    button {
-      margin-top: 2rem;
-      padding: 0.8rem 2rem;
-      font-size: 1.1rem;
+    .extra-name { color: #e7dfe3; font-weight: 400; }
+    .extra-price { color: #f0b9c8; font-weight: 600; }
+
+    .book-btn {
+      display: inline-block;
+      margin-top: 4rem;
+      padding: 1rem 3.5rem;
       background-color: #f0b9c8;
-      border: none;
-      border-radius: 8px;
       color: #1c1c1c;
-      cursor: pointer;
-      transition: background-color 0.3s ease, transform 0.2s ease;
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 5px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: 0.3s;
     }
 
-    button:hover {
+    .book-btn:hover {
       background-color: #ff8fc1;
       transform: scale(1.05);
     }
+
+    footer { font-size: 0.8rem; color: #777; }
   </style>
 </head>
-
 <body>
+
   <header>
     <h1>Miss Princess</h1>
-   <nav>
+    <nav>
       <a href="index.html">Home</a>
       <a href="services.html">Services</a>
       <a href="pricing.html">Pricing</a>
-      <a href="digital.html">Digital Content</a>
-      <a href="femdom.html">Femdom & BDSM</a>
+      <a href="femdom.html">Femdom</a>
       <a href="contact.html">Contact</a>
-      <a href="reviews.html">Reviews</a>
     </nav>
-
   </header>
 
   <main>
-    <h2>Pricing</h2>
-    <p>Choose your session duration and enhance it with optional add-ons. Everything is flexible and tailored to your preferences.</p>
+    <h2>Session Rates</h2>
+    <p style="color: #bbb;">Premier Birmingham companionship. Select your duration and personal enhancements.</p>
 
     <div class="pricing-grid">
-      <div class="price-card"><h3>15 mins</h3><p>£65</p></div>
-      <div class="price-card"><h3>30 mins</h3><p>£90</p></div>
-      <div class="price-card"><h3>1 hour</h3><p>£150</p></div>
-      <div class="price-card"><h3>2 hours</h3><p>£300</p></div>
-      <div class="price-card"><h3>3 hours</h3><p>£490</p></div>
-      <div class="price-card"><h3>4 hours</h3><p>£675</p></div>
-      <div class="price-card"><h3>5 hours</h3><p>£900</p></div>
-      <div class="price-card"><h3>6 hours</h3><p>£1200</p></div>
-
-      
+      <div class="price-card">15 mins<span>£65</span></div>
+      <div class="price-card">30 mins<span>£100</span></div>
+      <div class="price-card">1 hour<span>£200</span></div>
+      <div class="price-card">2 hours<span>£300</span></div>
+      <div class="price-card">3 hours<span>£490</span></div>
+      <div class="price-card">4 hours<span>£675</span></div>
     </div>
 
-    <div class="add-ons">
-      <h3>Optional Add-Ons</h3>
-      <ul>
-        <li>Kissing / Light Intimacy: +£20</li>
-        <li>Classic Sex: +£20</li>
-        <li>Deep Throat: +£30</li>
-        <li>CIF / CIM: +£40–£80</li>
-        <li>Role Play / Fantasy: +£30–£60</li>
-        <li>Fetish / Custom Requests: +£40–£100</li>
-        <li>Female Domination (Intro 30–60 min): +£50–£100</li>
-        <li>Female Domination (Standard per hour): +£120–£150</li>
+    <div class="inclusive-box">
+      <h3>Inclusive in All Rates</h3>
+      <ul class="inclusive-list">
+        <li>✦ Striptease</li>
+        <li>✦ Lapdance</li>
+        <li>✦ Natural BJ</li>
+        <li>✦ Playful Teasing</li>
       </ul>
-
     </div>
 
-    <button onclick="window.location.href='contact.html'">Get in Touch</button>
+    <h3>Optional Enhancements</h3>
+    <div class="extras-list">
+      <div class="extra-row"><span class="extra-name">Kissing (GFE)</span> <span class="extra-price">£20</span></div>
+      <div class="extra-row"><span class="extra-name">Full GFE / Sex</span> <span class="extra-price">£20</span></div>
+      <div class="extra-row"><span class="extra-name">Deepthroat (ODT)</span> <span class="extra-price">£30</span></div>
+      <div class="extra-row"><span class="extra-name">CIM / CIF</span> <span class="extra-price">£40 - £80</span></div>
+      <div class="extra-row"><span class="extra-name">Filming / Content</span> <span class="extra-price">£30</span></div>
+    </div>
+
+    <a href="contact.html" class="book-btn">Book Now</a>
   </main>
 
   <footer>
-    © 2025 Miss Princess — All rights reserved.
+    © 2026 Miss Princess Birmingham — Strictly 18+
   </footer>
+
 </body>
 </html>
-
