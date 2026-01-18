@@ -38,7 +38,6 @@
       color: #e7dfe3;
       font-weight: 500;
       font-size: 0.9rem;
-      transition: color 0.3s;
     }
     nav a:hover { color: #f0b9c8; }
 
@@ -49,14 +48,30 @@
       margin: 0 auto;
     }
 
-    h2 {
-      font-family: 'Rouge Script', cursive;
-      color: #f0b9c8;
-      font-size: 3rem;
-      margin-bottom: 1rem;
+    h2 { font-family: 'Rouge Script', cursive; color: #f0b9c8; font-size: 3.2rem; margin-bottom: 1rem; }
+    h3 { font-family: 'Rouge Script', cursive; color: #f0b9c8; font-size: 2.2rem; margin-top: 3.5rem; border-bottom: 1px solid rgba(240, 185, 200, 0.2); display: inline-block; padding-bottom: 5px; }
+
+    /* RATES GRID */
+    .rates-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
     }
 
-    .intro-text { color: #bbb; max-width: 700px; margin: 0 auto 3rem; font-size: 1.05rem; line-height: 1.6; }
+    .rate-card {
+      background-color: rgba(240, 185, 200, 0.05);
+      border: 1px solid #f0b9c8;
+      border-radius: 12px;
+      padding: 2rem;
+      transition: 0.3s;
+    }
+
+    .rate-card.duo { border: 1px solid #fff; background-color: rgba(255, 255, 255, 0.05); }
+
+    .rate-card h4 { font-family: 'Rouge Script', cursive; font-size: 2rem; color: #f0b9c8; margin: 0; }
+    .rate-card .time { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: #ccc; }
+    .rate-card .price { display: block; font-size: 2.5rem; font-weight: 600; color: #fff; margin: 10px 0; }
 
     /* SPECIALTIES GRID */
     .specialties-grid {
@@ -66,53 +81,12 @@
       margin-top: 2rem;
     }
 
-    .spec-card {
-      background-color: rgba(255,255,255,0.03);
-      border: 1px solid rgba(240, 185, 200, 0.15);
-      border-radius: 12px;
-      padding: 2rem;
-      transition: all 0.3s ease;
-      text-align: left;
-    }
+    .spec-card { background-color: rgba(255,255,255,0.03); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 12px; padding: 2rem; text-align: left; }
+    .spec-card h4 { color: #f0b9c8; margin: 0 0 10px 0; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; }
+    .spec-card p { font-size: 0.85rem; color: #ccc; line-height: 1.6; }
 
-    .spec-card:hover {
-      transform: translateY(-5px);
-      border-color: #f0b9c8;
-      background-color: rgba(240, 185, 200, 0.05);
-    }
-
-    .spec-card h3 {
-      font-family: 'Rouge Script', cursive;
-      color: #f0b9c8;
-      font-size: 2rem;
-      margin: 0 0 10px 0;
-    }
-
-    .spec-card p {
-      font-size: 0.9rem;
-      color: #ccc;
-      line-height: 1.6;
-      margin: 0;
-    }
-
-    .cta-btn {
-      display: inline-block;
-      margin-top: 4rem;
-      padding: 1rem 3.5rem;
-      background-color: #f0b9c8;
-      color: #1c1c1c;
-      text-decoration: none;
-      font-weight: 600;
-      border-radius: 5px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      transition: 0.3s;
-    }
-
-    .cta-btn:hover {
-      background-color: #ff8fc1;
-      transform: scale(1.05);
-    }
+    .cta-btn { display: inline-block; margin-top: 3rem; padding: 1rem 3.5rem; background-color: #f0b9c8; color: #1c1c1c; text-decoration: none; font-weight: 600; border-radius: 5px; text-transform: uppercase; transition: 0.3s; }
+    .cta-btn:hover { background-color: #ff8fc1; transform: scale(1.05); }
 
     footer { font-size: 0.8rem; color: #777; margin-top: 4rem; }
   </style>
@@ -130,49 +104,63 @@
   </header>
 
   <main>
-    <h2>Femdom & BDSM Specialties</h2>
-    <p class="intro-text">
-      Explore the depths of submission. All specialties below are available within your chosen session time, tailored to your specific boundaries and desires.
-    </p>
-
-    <div class="specialties-grid">
-      <div class="spec-card">
-        <h3>Foot & Thigh Worship</h3>
-        <p>Adoration of my feet and legs. Includes footjobs and thighjobs as an expression of your devotion.</p>
+    <h2>Solo Domination</h2>
+    <div class="rates-container">
+      <div class="rate-card">
+        <h4>The Introduction</h4>
+        <span class="time">30 Minutes</span>
+        <span class="price">£100</span>
       </div>
-
-      <div class="spec-card">
-        <h3>Pegging</h3>
-        <p>Complete role reversal and internal surrender. Handled with professional care and high-quality equipment.</p>
+      <div class="rate-card">
+        <h4>The Immersion</h4>
+        <span class="time">1 Hour</span>
+        <span class="price">£200</span>
       </div>
-
-      <div class="spec-card">
-        <h3>Prostate Massage</h3>
-        <p>Dedicated internal stimulation and edging, performed with clinical precision and dominant control.</p>
-      </div>
-
-      <div class="spec-card">
-        <h3>Overstimulation</h3>
-        <p>Sensory flooding through impact, sound, and touch designed to push your psychological and physical limits.</p>
-      </div>
-
-      <div class="spec-card">
-        <h3>Impact Play</h3>
-        <p>Expertly delivered discipline using spanking, paddling, or crops at your preferred intensity.</p>
-      </div>
-
-      <div class="spec-card">
-        <h3>Psychological Play</h3>
-        <p>Praise and degradation, financial domination, and custom roleplay scenarios (Governess, Boss, etc.).</p>
+      <div class="rate-card">
+        <h4>The Surrender</h4>
+        <span class="time">2 Hours</span>
+        <span class="price">£300</span>
       </div>
     </div>
 
-    <a href="contact.html" class="cta-btn">Enquire for Session</a>
+    <h2>Double the Authority (Duo)</h2>
+    <p style="color: #bbb; margin-bottom: 2rem;">Experience the overwhelming power of two Dominatrixes working in tandem to break your resolve.</p>
+    <div class="rates-container">
+      <div class="rate-card duo">
+        <h4>The Duo Dynamic</h4>
+        <span class="time">1 Hour Duo</span>
+        <span class="price">£300</span>
+      </div>
+      <div class="rate-card duo">
+        <h4>Total Subjugation</h4>
+        <span class="time">2 Hour Duo</span>
+        <span class="price">£500</span>
+      </div>
+    </div>
+
+    <h3>Available Specialties</h3>
+    <div class="specialties-grid">
+      <div class="spec-card"><h4>Body & Foot Worship</h4><p>Adoration of my feet and legs. Includes footjobs and thighjobs.</p></div>
+      <div class="spec-card"><h4>Praise & Degradation</h4><p>High-intensity verbal play exploring your worth.</p></div>
+      <div class="spec-card"><h4>Pegging & Prostate</h4><p>Total role reversal and internal surrender.</p></div>
+      <div class="spec-card"><h4>Tease & Denial</h4><p>Control of your release to the point of absolute frustration.</p></div>
+      <div class="spec-card"><h4>Oily Sexy Massage</h4><p>A dominant, oily exploration of your body under my command.</p></div>
+      <div class="spec-card"><h4>Findom & Humiliation</h4><p>Financial submission and ego-stripping tasks.</p></div>
+      <div class="spec-card"><h4>Overstimulation</h4><p>Sensory flooding to push your neurological limits.</p></div>
+      <div class="spec-card"><h4>Ball Busting & CBT</h4><p>Controlled physical discipline and endurance play.</p></div>
+      <div class="spec-card"><h4>Roleplay & Fetish</h4><p>Governess, Boss, or custom niche scenarios.</p></div>
+    </div>
+
+    <p style="margin-top: 3rem; font-style: italic; color: #f0b9c8;">Please enquire for any specific fetish or niche request not listed above.</p>
+
+    <a href="contact.html" class="cta-btn">Petition for Session</a>
   </main>
 
   <footer>
-    © 2026 Miss Princess Birmingham — Strictly Professional Femdom
+    © 2026 Miss Princess Birmingham — Strictly Professional
   </footer>
 
 </body>
 </html>
+</html>
+
