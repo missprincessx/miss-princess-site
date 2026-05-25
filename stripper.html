@@ -5,67 +5,311 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Private Stripper Performance Menu</title>
     
+    <!-- Link to your fonts so they render correctly -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Rouge+Script&display=swap" rel="stylesheet">
+
+    <style>
+        /* ===== General Global Styles ===== */
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #1c1c1c; /* original dark background */
+            color: #f2e7f2; /* light text for contrast */
+            margin: 0;
+            padding: 0;
+        }
+
+        /* ===== Layout Container ===== */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* ===== Header & Typography ===== */
+        header {
+            text-align: center;
+            padding: 2rem 0;
+            background-color: #2a2a2a; /* subtle darker header/footer */
+            border-radius: 15px;
+            margin-bottom: 2rem;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Rouge Script', cursive;
+            color: #f0b9c8; /* rose-pink accents */
+            margin-top: 0;
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            color: #e7dfe3;
+            max-width: 600px;
+            margin: 0 auto;
+            font-weight: 400;
+        }
+
+        .glow-text {
+            color: #ff8fc1;
+            text-shadow: 0 0 10px rgba(255, 143, 193, 0.4);
+        }
+
+        /* ===== Navigation Bar Style ===== */
+        nav {
+            background-color: #2a2a2a;
+            padding: 1.2rem 1rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(240, 185, 200, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav a {
+            margin: 0 1rem;
+            text-decoration: none;
+            color: #e7dfe3;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #ff8fc1; /* subtle pink hover */
+        }
+
+        /* Highlights this specific page link in the menu bar */
+        nav a.active-link {
+            color: #f0b9c8;
+            font-weight: 600;
+            border-bottom: 2px solid #f0b9c8;
+            padding-bottom: 4px;
+        }
+
+        /* ===== Grid Layout for Performance Cards ===== */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        /* Matches your translucent dark bubble card specs */
+        .card {
+            background-color: rgba(255,255,255,0.05); 
+            border-radius: 15px;
+            padding: 1.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            cursor: pointer;
+            text-align: center;
+            border: 1px solid transparent;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 8px 20px rgba(255, 0, 120, 0.4); /* subtle pink glow */
+            border-color: rgba(240, 185, 200, 0.3);
+        }
+
+        .card h3 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            line-height: 1.1;
+        }
+
+        .card .price {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #ff8fc1;
+            margin-bottom: 1.5rem;
+        }
+
+        .card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: left;
+        }
+
+        .card ul li {
+            font-size: 0.95rem;
+            color: #e7dfe3;
+            margin-bottom: 0.8rem;
+            line-height: 1.4;
+            position: relative;
+            padding-left: 15px;
+        }
+
+        /* Tiny custom pink dot for the list items */
+        .card ul li::before {
+            content: "•";
+            color: #f0b9c8;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        /* ===== House Rules Section ===== */
+        .rules-section {
+            background-color: rgba(255,255,255,0.02);
+            border: 1px solid rgba(240, 185, 200, 0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-top: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .rules-section h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .rules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .rule-item h4 {
+            color: #f0b9c8;
+            margin: 0 0 0.5rem 0;
+            font-size: 1.1rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+        }
+
+        .rule-item p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: #e7dfe3;
+            line-height: 1.5;
+        }
+
+        /* ===== Action Booking Button ===== */
+        .cta-container {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .btn-booking {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            font-size: 1.1rem;
+            background-color: #f0b9c8; /* rose-pink */
+            border: none;
+            border-radius: 8px;
+            color: #1c1c1c;
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+        }
+
+        .btn-booking:hover {
+            background-color: #ff8fc1; /* slightly brighter pink */
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(255, 143, 193, 0.5);
+        }
+
+        /* ===== Responsive Settings ===== */
+        @media (max-width: 600px) {
+            nav a {
+                display: block;
+                margin: 0.5rem 0;
+            }
+            header h1 {
+                font-size: 2.5rem;
+            }
+            .card:hover {
+                transform: none; /* simple stack behavior on small screens */
+            }
+        }
+    </style>
 </head>
 <body>
-<nav>
-  <a href="index.html">Home</a>
-  <a href="services.html">Services</a>
-  <a href="pricing.html">Pricing</a>
-  <a href="digital.html">Digital Content</a>
-  <a href="femdom.html">Femdom & BDSM</a>
-  <a href="contact.html">Contact</a>
-  <a href="reviews.html">Reviews</a>
-  <a href="terms.html">Terms</a>
-  <a href="stripper.html">Private Stripper</a>
-</nav>
+
+    <!-- Shared Navigation Menu -->
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="digital.html">Digital Content</a>
+        <a href="femdom.html">Femdom & BDSM</a>
+        <a href="stripper.html" class="active-link">Private Stripper</a>
+        <a href="contact.html">Contact</a>
+        <a href="reviews.html">Reviews</a>
+        <a href="terms.html">Terms</a>
+    </nav>
+
+    <!-- Content Block -->
     <div class="container">
         
         <!-- Header Section -->
         <header>
             <h1>Private <span class="glow-text">Stripper Experience</span></h1>
-            <p>Exclusive 1-on-1 performance and sensual pole routine sessions. Incall Only — Selly oak, near central birmingham.</p>
+            <p>Exclusive 1-on-1 performance and sensual pole routine sessions. Incall Only — Selly Oak, near Central Birmingham.</p>
         </header>
 
         <!-- Pricing Cards Section -->
         <div class="pricing-grid">
 
+            <!-- 15 Min Card -->
             <div class="card">
-                <h3>15-Min sprint Performance</h3>
-                <div class="price">£70</div>
+                <div>
+                    <h3>15-Min Sprint Performance</h3>
+                    <div class="price">£70</div>
+                </div>
                 <ul>
                     <li>Incall</li>
                     <li>1 Choreographed strip & pole routine</li>
                 </ul>
             </div>
+
             <!-- 30 Min Card -->
             <div class="card">
-                <h3>30-Min Express Performance</h3>
-                <div class="price">£150</div>
+                <div>
+                    <h3>30-Min Express Performance</h3>
+                    <div class="price">£150</div>
+                </div>
                 <ul>
                     <li>Incall</li>
-                    <li>1 Choreographed strip & pole routine.Personal dance included.</li>
+                    <li>1 Choreographed strip & pole routine. Personal dance included.</li>
                     <li>15-Minute companion wrap-up</li>
                 </ul>
             </div>
 
             <!-- 45 Min Card -->
             <div class="card">
-                <h3>45-Min Deluxe Express</h3>
-                <div class="price">£200</div>
-              <ul>
+                <div>
+                    <h3>45-Min Deluxe Express</h3>
+                    <div class="price">£200</div>
+                </div>
+                <ul>
                     <li>Incall</li>
-                    <li>Extended sensual pole & floorwork routine.Personal dance included.</li>
+                    <li>Extended sensual pole & floorwork routine. Personal dance included.</li>
                     <li>35-Minute unhurried companion time</li>
                 </ul>
             </div>
 
             <!-- 1 Hour Card -->
             <div class="card">
-                <h3>1-Hour Full Experience</h3>
-                <div class="price">£250</div>
+                <div>
+                    <h3>1-Hour Full Experience</h3>
+                    <div class="price">£250</div>
+                </div>
                 <ul>
                     <li>Incall</li>
-                    <li>Full custom performance & strip sequence.Personal dance included.</li>
+                    <li>Full custom performance & strip sequence. Personal dance included.</li>
                     <li>Premium, completely relaxed 1-on-1 time</li>
                 </ul>
             </div>
@@ -74,23 +318,22 @@
 
         <!-- House Rules / Screening Section -->
         <div class="rules-section">
-            <h2>Session details </h2>
+            <h2>Session Details</h2>
             <div class="rules-grid">
                 
                 <div class="rule-item">
                     <h4>1. Verification & Deposit</h4>
-                    <p>New clients must pass full ID/digital footprint screening.</p>
+                    <p>New clients must pass full ID/digital footprint screening before booking validation.</p>
                 </div>
 
                 <div class="rule-item">
                     <h4>2. Absolute Discretion</h4>
-                    <p>Please arrive exactly at your scheduled time. Early waiting outside the building is strictly forbidden.</p>
+                    <p>Please arrive exactly at your scheduled time. Early waiting outside the building is strictly forbidden to protect tenancy privacy.</p>
                 </div>
-            
 
                 <div class="rule-item">
                     <h4>3. No Media/Filming</h4>
-                    <p>Strictly 1-on-1 entertainment. Photography, video recording, or live-streaming is absolutely banned.</p>
+                    <p>Strictly 1-on-1 private entertainment. Photography, video recording, or live-streaming is absolutely banned inside the space.</p>
                 </div>
 
             </div>
@@ -98,7 +341,7 @@
 
         <!-- Booking Action Button -->
         <div class="cta-container">
-            <a href="#contact" class="btn-booking">Initiate Screening & Book Session</a>
+            <a href="contact.html" class="btn-booking">Initiate Screening & Book Session</a>
         </div>
 
     </div>
